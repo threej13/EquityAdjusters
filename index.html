@@ -37,6 +37,7 @@
       font-size: 17px;
       max-width: 600px;
       margin: 0 auto 20px;
+      line-height: 1.5;
     }
 
     .cta-btn {
@@ -47,9 +48,9 @@
       border-radius: 5px;
       display: inline-block;
       font-weight: bold;
+      font-size: 16px;
     }
 
-    /* 🔥 REVIEW TICKER */
     .review-ticker {
       overflow: hidden;
       background: #fff;
@@ -79,10 +80,12 @@
       border-radius: 8px;
       box-shadow: 0 2px 5px rgba(0,0,0,0.05);
       flex-shrink: 0;
+      font-size: 14px;
     }
 
     .google-logo {
       width: 18px;
+      height: auto;
     }
 
     @keyframes scrollReviews {
@@ -94,12 +97,14 @@
       text-align: center;
       color: #012b61;
       margin: 40px 20px 20px;
+      font-size: 24px;
     }
 
     .video-section {
       display: flex;
       justify-content: center;
       padding: 0 20px;
+      box-sizing: border-box;
     }
 
     .video-wrapper {
@@ -111,6 +116,7 @@
 
     .video-wrapper iframe {
       position: absolute;
+      inset: 0;
       width: 100%;
       height: 100%;
       border: 0;
@@ -122,6 +128,8 @@
       max-width: 650px;
       margin: 20px auto;
       padding: 0 20px;
+      font-size: 16px;
+      line-height: 1.5;
     }
 
     .form-section {
@@ -131,6 +139,14 @@
       padding: 25px;
       box-shadow: 0 4px 10px rgba(0,0,0,0.1);
       border-radius: 6px;
+      box-sizing: border-box;
+    }
+
+    .form-section h2 {
+      text-align: center;
+      color: #012b61;
+      margin-top: 0;
+      margin-bottom: 20px;
     }
 
     input, select, textarea {
@@ -139,6 +155,13 @@
       margin-bottom: 12px;
       border: 1px solid #ccc;
       border-radius: 4px;
+      box-sizing: border-box;
+      font-size: 14px;
+    }
+
+    textarea {
+      min-height: 110px;
+      resize: vertical;
     }
 
     button {
@@ -149,12 +172,33 @@
       border: none;
       font-weight: bold;
       border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
     }
 
     .footer {
       text-align: center;
       padding: 20px;
       font-size: 12px;
+      color: #666;
+    }
+
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 24px;
+      }
+
+      .video-heading {
+        font-size: 22px;
+      }
+
+      .hero img {
+        max-height: 90px;
+      }
+
+      .review {
+        font-size: 13px;
+      }
     }
   </style>
 </head>
@@ -162,50 +206,52 @@
 <body>
 
   <div class="hero">
-    <img src="https://img1.wsimg.com/isteam/ip/e8d1369e-a6d9-4edf-9362-195f8c9169f7/blob-d92e97c.png/:/rs=h:175,m" />
+    <img src="https://img1.wsimg.com/isteam/ip/e8d1369e-a6d9-4edf-9362-195f8c9169f7/blob-d92e97c.png/:/rs=h:175,m" alt="Equity Adjusters Logo" />
     <h1>Need Help With Your Insurance Claim?</h1>
     <p>We help homeowners get the settlement they deserve.</p>
     <a href="#form" class="cta-btn">Free Consultation →</a>
 
-    <!-- 🔥 NEW REVIEW SECTION -->
     <div class="review-ticker">
       <div class="review-track">
 
         <div class="review">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" class="google-logo">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" class="google-logo" alt="Google">
           ⭐️⭐️⭐️⭐️⭐️ "State Farm offered $2,800 — they got me over $11,000." – John M.
         </div>
 
         <div class="review">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" class="google-logo">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" class="google-logo" alt="Google">
           ⭐️⭐️⭐️⭐️⭐️ "Denied claim turned into full roof approval." – Sarah T.
         </div>
 
         <div class="review">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" class="google-logo">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" class="google-logo" alt="Google">
           ⭐️⭐️⭐️⭐️⭐️ "They handled everything with the insurance company." – Mike R.
         </div>
 
         <div class="review">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" class="google-logo">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" class="google-logo" alt="Google">
           ⭐️⭐️⭐️⭐️⭐️ "Fast, professional, and got results I didn’t expect." – David L.
         </div>
 
         <div class="review">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" class="google-logo">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" class="google-logo" alt="Google">
           ⭐️⭐️⭐️⭐️⭐️ "If your claim was underpaid, call them immediately." – Chris P.
         </div>
 
       </div>
     </div>
-
   </div>
 
   <h2 class="video-heading">Watch This Before Filing Your Claim</h2>
 
   <div class="video-section">
     <div class="video-wrapper">
-      <iframe src="https://www.youtube.com/embed/TLEtgKfD_40?rel=0" allowfullscreen></iframe>
+      <iframe
+        src="https://www.youtube.com/embed/TLEtgKfD_40?rel=0"
+        title="Equity Adjusters Video"
+        allowfullscreen>
+      </iframe>
     </div>
   </div>
 
@@ -216,7 +262,9 @@
   <div class="form-section" id="form">
     <h2>Get Your Free Claim Review</h2>
 
-    <form action="https://hooks.zapier.com/hooks/catch/25669246/ufa6xis/" method="POST">
+    <form action="https://formspree.io/f/xaqajjnl" method="POST">
+      <input type="hidden" name="_subject" value="New Equity Adjusters Lead" />
+
       <select name="help_type" required>
         <option value="">What do you need help with?</option>
         <option>Insurance Claim Help</option>
