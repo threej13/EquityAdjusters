@@ -83,10 +83,6 @@
       font-size: 14px;
     }
 
-    .google-logo {
-      width: 18px;
-    }
-
     @keyframes scrollReviews {
       0% { transform: translateX(100%); }
       100% { transform: translateX(-100%); }
@@ -117,6 +113,7 @@
       height: 100%;
       border: 0;
       border-radius: 8px;
+      inset: 0;
     }
 
     .video-text {
@@ -141,6 +138,7 @@
       margin-bottom: 12px;
       border: 1px solid #ccc;
       border-radius: 4px;
+      box-sizing: border-box;
     }
 
     button {
@@ -151,6 +149,7 @@
       border: none;
       font-weight: bold;
       border-radius: 5px;
+      cursor: pointer;
     }
 
     .footer {
@@ -158,40 +157,35 @@
       padding: 20px;
       font-size: 12px;
     }
+
+    .form-message {
+      text-align: center;
+      margin-top: 10px;
+      font-size: 14px;
+      display: none;
+    }
+
+    .form-message.error {
+      color: #b00020;
+    }
   </style>
 </head>
 
 <body>
 
   <div class="hero">
-    <img src="https://img1.wsimg.com/isteam/ip/e8d1369e-a6d9-4edf-9362-195f8c9169f7/blob-d92e97c.png/:/rs=h:175,m" />
+    <img src="https://img1.wsimg.com/isteam/ip/e8d1369e-a6d9-4edf-9362-195f8c9169f7/blob-d92e97c.png/:/rs=h:175,m" alt="Equity Adjusters Logo" />
     <h1>Need Help With Your Insurance Claim?</h1>
     <p>We help homeowners get the settlement they deserve.</p>
     <a href="#form" class="cta-btn">Free Consultation →</a>
 
     <div class="review-ticker">
       <div class="review-track">
-
-        <div class="review">
-          ⭐️⭐️⭐️⭐️⭐️ "State Farm offered $2,800 — they got me over $11,000." – John M.
-        </div>
-
-        <div class="review">
-          ⭐️⭐️⭐️⭐️⭐️ "Denied claim turned into full roof approval." – Sarah T.
-        </div>
-
-        <div class="review">
-          ⭐️⭐️⭐️⭐️⭐️ "They handled everything with the insurance company." – Mike R.
-        </div>
-
-        <div class="review">
-          ⭐️⭐️⭐️⭐️⭐️ "Fast, professional, and got results I didn’t expect." – David L.
-        </div>
-
-        <div class="review">
-          ⭐️⭐️⭐️⭐️⭐️ "If your claim was underpaid, call them immediately." – Chris P.
-        </div>
-
+        <div class="review">⭐️⭐️⭐️⭐️⭐️ "State Farm offered $2,800 — they got me over $11,000." – John M.</div>
+        <div class="review">⭐️⭐️⭐️⭐️⭐️ "Denied claim turned into full roof approval." – Sarah T.</div>
+        <div class="review">⭐️⭐️⭐️⭐️⭐️ "They handled everything with the insurance company." – Mike R.</div>
+        <div class="review">⭐️⭐️⭐️⭐️⭐️ "Fast, professional, and got results I didn’t expect." – David L.</div>
+        <div class="review">⭐️⭐️⭐️⭐️⭐️ "If your claim was underpaid, call them immediately." – Chris P.</div>
       </div>
     </div>
   </div>
@@ -200,7 +194,7 @@
 
   <div class="video-section">
     <div class="video-wrapper">
-      <iframe src="https://www.youtube.com/embed/TLEtgKfD_40?rel=0" allowfullscreen></iframe>
+      <iframe src="https://www.youtube.com/embed/TLEtgKfD_40?rel=0" title="Equity Adjusters Video" allowfullscreen></iframe>
     </div>
   </div>
 
@@ -211,37 +205,71 @@
   <div class="form-section" id="form">
     <h2>Get Your Free Claim Review</h2>
 
-    <form action="https://formspree.io/f/xaqajjnl" method="POST">
-  <input type="hidden" name="_subject" value="New Equity Adjusters Lead" />
+    <form id="lead-form" action="https://formspree.io/f/xaqajjnl" method="POST">
+      <input type="hidden" name="_subject" value="New Equity Adjusters Lead" />
 
-  <select name="help_type" required>
-    <option value="">What do you need help with?</option>
-    <option>Insurance Claim Help</option>
-    <option>Policy Review</option>
-    <option>Supplement / Estimate Review</option>
-  </select>
+      <select name="help_type" required>
+        <option value="">What do you need help with?</option>
+        <option>Insurance Claim Help</option>
+        <option>Policy Review</option>
+        <option>Supplement / Estimate Review</option>
+      </select>
 
-  <select name="damage_timing" required>
-    <option value="">When did damage occur?</option>
-    <option>Past Month</option>
-    <option>1-3 Months</option>
-    <option>Over 6 Months</option>
-  </select>
+      <select name="damage_timing" required>
+        <option value="">When did damage occur?</option>
+        <option>Past Month</option>
+        <option>1-3 Months</option>
+        <option>Over 6 Months</option>
+      </select>
 
-  <input type="text" name="name" placeholder="Full Name" required />
-  <input type="email" name="email" placeholder="Email" required />
-  <input type="tel" name="phone" placeholder="Phone" required />
-  <input type="text" name="address" placeholder="Property Address" />
-  <textarea name="details" placeholder="Brief description"></textarea>
+      <input type="text" name="name" placeholder="Full Name" required />
+      <input type="email" name="email" placeholder="Email" required />
+      <input type="tel" name="phone" placeholder="Phone" required />
+      <input type="text" name="address" placeholder="Property Address" />
+      <textarea name="details" placeholder="Brief description" required></textarea>
 
-  <button type="submit">Submit →</button>
-</form>
-
+      <button type="submit">Submit →</button>
+      <div id="form-message" class="form-message"></div>
+    </form>
   </div>
 
   <div class="footer">
     © 2026 Equity Adjusters
   </div>
+
+  <script>
+    const form = document.getElementById("lead-form");
+    const message = document.getElementById("form-message");
+
+    form.addEventListener("submit", async function (e) {
+      e.preventDefault();
+
+      message.style.display = "none";
+      message.className = "form-message";
+
+      try {
+        const response = await fetch(form.action, {
+          method: "POST",
+          body: new FormData(form),
+          headers: {
+            "Accept": "application/json"
+          }
+        });
+
+        if (response.ok) {
+          window.location.href = "https://threej13.github.io/EquityAdjusters/thank-you.html";
+        } else {
+          message.textContent = "There was a problem submitting the form. Please try again.";
+          message.classList.add("error");
+          message.style.display = "block";
+        }
+      } catch (error) {
+        message.textContent = "There was a problem submitting the form. Please try again.";
+        message.classList.add("error");
+        message.style.display = "block";
+      }
+    });
+  </script>
 
 </body>
 </html>
